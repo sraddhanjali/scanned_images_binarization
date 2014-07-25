@@ -23,5 +23,6 @@ import cv2
 import helper_function as hf
 
 img = cv2.imread("test/grayscale.png")
-img = hf.img_divide(img)
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img = hf.img_divide(img, 70)
 hf.show_wait(img)
