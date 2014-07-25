@@ -43,9 +43,9 @@ def img_adaptive_otsu(block):
     if sd_block > set_sd:
         ret, block = cv2.threshold(block, 0, 255, cv2.THRESH_OTSU)
     elif mean_block > set_mean:
-        ndarray_value_replace(block, 255)
+        nd_array_value_replace(block, 255)
     elif mean_block <= set_mean:
-        ndarray_value_replace(block, 0)
+        nd_array_value_replace(block, 0)
     return block
 
 
