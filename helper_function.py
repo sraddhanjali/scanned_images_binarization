@@ -36,17 +36,17 @@ def img_adaptive_otsu(block):
     # print type(block)
     """This is where the adaptive threshold implementation occurs based on local otsu threshold value for each block """
     # standard defined
-    set_mean = 128
+    set_mean = 90
     set_sd = 20
-    #mean and standard deviation evaluated for a block
     mean_block = np.mean(block)
     sd_block = np.std(block)
     if sd_block > set_sd:
         ret, block = cv2.threshold(block, 0, 255, cv2.THRESH_OTSU)
-    elif mean_block > set_mean and sd_block < set_sd:
-        block[:] = 255
-    elif mean_block <= set_mean and sd_block < set_sd:
-        block[:] = 0
+    elif sd_block < set_sd:
+        if mean_block > set_mean:
+            block[:] = 255
+        else:
+            block[:] = 0
     return block
 
 
